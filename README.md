@@ -1,10 +1,8 @@
-# Tic Tac Toe Game App
+# Cms App
 
-![Completion: 80%](https://img.shields.io/badge/completion-80%25-green.svg)
+![Completion: 50%](https://img.shields.io/badge/completion-80%25-green.svg)
 
 > A Vue.js project
-
->See the server <a href="https://github.com/augusto-jm-amaral/tic-tac-toe-game-server">here</a>.
 
 ## Build Setup
 
@@ -30,6 +28,3 @@ npm run e2e
 # run all tests
 npm test
 ```
-
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
-
