@@ -1,6 +1,6 @@
 # CMS App
 
-![Completion: 40%](https://img.shields.io/badge/completion-80%25-green.svg)
+![Completion: 90%](https://img.shields.io/badge/completion-90%25-green.svg)
 
 > A Vue.js project
 

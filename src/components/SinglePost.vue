@@ -10,25 +10,6 @@
             </div>
             <div class="card-action">
               <p>{{post.body}}</p>
-<!--               <form class="row" v-on:submit.prevent="onSubmit">
-                <div class="input-field col s12">
-                  <input v-model="post.title" id="title" type="text" class="validate" required>
-                  <label for="title">Title</label>
-                </div>
-                <div class="input-field col s12">
-                  <textarea v-model="post.body" id="body" class="materialize-textarea" required></textarea>
-                  <label for="body">Body</label>
-                </div>
-                <div class="input-field col s12">
-                  <input v-model="post.path" id="path" type="text" class="validate" required>
-                  <label for="path">Path</label>
-                </div>
-                <button ref="btnsubmit" class="btn waves-effect waves-light btn-large deep-purple darken-2" type="submit" name="action">Create
-                </button>
-              </form> -->
-<!--               <button ref="toastsuccess" type="button" style="display: none;" onclick="Materialize.toast('User successfully created', 4000)"></button>
-              <button ref="toastsuccessupdate" type="button" style="display: none;" onclick="Materialize.toast('User successfully updated', 4000)"></button>
-              <button ref="toasterror" type="button" style="display: none;" onclick="Materialize.toast('Error creating', 4000)"></button> -->
             </div>
           </div>
         </div>
