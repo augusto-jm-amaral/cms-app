@@ -6,10 +6,11 @@
         <div class="col s6 offset-s3">
           <div class="card">
             <div class="card-content white-text deep-purple darken-2">
-              <span class="card-title">Post</span>
+              <span class="card-title">{{post.title}}</span>
             </div>
             <div class="card-action">
-              <form class="row" v-on:submit.prevent="onSubmit">
+              <p>{{post.body}}</p>
+<!--               <form class="row" v-on:submit.prevent="onSubmit">
                 <div class="input-field col s12">
                   <input v-model="post.title" id="title" type="text" class="validate" required>
                   <label for="title">Title</label>
@@ -24,10 +25,10 @@
                 </div>
                 <button ref="btnsubmit" class="btn waves-effect waves-light btn-large deep-purple darken-2" type="submit" name="action">Create
                 </button>
-              </form>
-              <button ref="toastsuccess" type="button" style="display: none;" onclick="Materialize.toast('User successfully created', 4000)"></button>
+              </form> -->
+<!--               <button ref="toastsuccess" type="button" style="display: none;" onclick="Materialize.toast('User successfully created', 4000)"></button>
               <button ref="toastsuccessupdate" type="button" style="display: none;" onclick="Materialize.toast('User successfully updated', 4000)"></button>
-              <button ref="toasterror" type="button" style="display: none;" onclick="Materialize.toast('Error creating', 4000)"></button>
+              <button ref="toasterror" type="button" style="display: none;" onclick="Materialize.toast('Error creating', 4000)"></button> -->
             </div>
           </div>
         </div>
@@ -55,42 +56,49 @@ export default {
     }
   },
   methods: {
-    onSubmit () {
-      let self = this
-      let token = this.$localStorage.get('token')
-      axios.defaults.headers.common['Authorization'] = `JWT ${token}`
+    // onSubmit () {
+    //   let self = this
+    //   let token = this.$localStorage.get('token')
+    //   axios.defaults.headers.common['Authorization'] = `JWT ${token}`
 
-      if (this.post._id) {
-        axios.put(`/posts/${this.post._id}`, this.post)
-          .then((res) => {
-            self.$refs.toastsuccessupdate.onclick()
-            self.$router.push('/')
-          })
-          .catch(err => {
-            console.log(err)
-            self.$refs.toasterror.onclick()
-          })
-      } else {
-        axios.post('/posts', this.post)
-          .then((res) => {
-            self.$refs.toastsuccess.onclick()
-            self.$router.push('/')
-          })
-          .catch(err => {
-            console.log(err)
-            self.$refs.toasterror.onclick()
-          })
-      }
-    }
+    //   if (this.post._id) {
+    //     axios.put(`/posts/${this.post._id}`, this.post)
+    //       .then((res) => {
+    //         self.$refs.toastsuccessupdate.onclick()
+    //         self.$router.push('/')
+    //       })
+    //       .catch(err => {
+    //         console.log(err)
+    //         self.$refs.toasterror.onclick()
+    //       })
+    //   } else {
+    //     axios.post('/posts', this.post)
+    //       .then((res) => {
+    //         self.$refs.toastsuccess.onclick()
+    //         self.$router.push('/')
+    //       })
+    //       .catch(err => {
+    //         console.log(err)
+    //         self.$refs.toasterror.onclick()
+    //       })
+    //   }
+    // }
   },
   mounted () {
+    console.log(this.$route.path)
     let self = this
 
-    if (this.$route.params._id) {
-      this.$refs.btnsubmit.innerHTML = 'Update'
-      axios.get(`/posts/${this.$route.params._id}`)
+    if (this.$route.path) {
+      axios.get(this.$route.path)
         .then((res) => { self.post = res.data })
-        .catch((err) => console.log(err))
+        .catch((err) => {
+          self.post = {
+            title: 'Not Found',
+            body: 'This page does not exist',
+            path: ''
+          }
+          console.log(err)
+        })
     }
   }
 }

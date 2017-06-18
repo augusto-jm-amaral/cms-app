@@ -56,13 +56,15 @@ export default {
 
       axios.post('/users/login', payload)
         .then(res => {
-          console.log(res.data.name)
-
           self.$localStorage.set('token', res.data.token)
           self.$localStorage.set('name', res.data.name)
           self.$localStorage.set('_id', res.data._id)
-          axios.defaults.headers.common['Authorization'] = `JWT ${res.data.token}`
-          self.$router.push('/')
+
+          if (self.$route.query.redirect) {
+            self.$router.push(self.$route.query.redirect)
+          } else {
+            self.$router.push('/')
+          }
         })
         .catch(err => {
           self.$refs.toast.onclick()

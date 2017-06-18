@@ -4,6 +4,7 @@ import Home from '@/components/Home'
 import Signin from '@/components/Signin'
 import Signup from '@/components/Signup'
 import Post from '@/components/Post'
+import SinglePost from '@/components/SinglePost'
 
 Vue.use(Router)
 
@@ -27,7 +28,19 @@ export default new Router({
     {
       path: '/post',
       name: 'Post',
-      component: Post
+      component: Post,
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/post/:_id',
+      name: 'Post',
+      component: Post,
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '*',
+      name: 'SinglePost',
+      component: SinglePost
     }
   ],
   mode: 'history'
